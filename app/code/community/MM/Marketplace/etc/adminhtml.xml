@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MM Marketplace 
+ * 
+ * @category     MM
+ * @package      MM_Marketplace 
+ * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
+ * @author       MM (Thiago Caldeira de Lima)  
+ * @version      Release: 0.1.0
+ */
+ -->
+<config>
+    <menu>
+        <marketplace module="marketplace">
+            <title>Marketplace</title>
+            <sort_order>71</sort_order>
+            <children>
+                <catalog module="marketplace">
+                    <title>Products</title>
+                    <sort_order>1</sort_order>
+                    <action>marketplace/adminhtml_catalog_product/index</action>
+                </catalog>  
+            </children>
+        </marketplace>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <marketplace module="marketplace">
+                        <title>Marketplace</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <marketplace_companies module="marketplace">
+                                <title>Manage Companies</title>
+                                <sort_order>0</sort_order>
+                                <action>marketplace/adminhtml_marketplace/index</action>
+                            </marketplace_companies>
+                            <dashboard module="marketplace">
+                                <title>Dashboard</title>
+                                <sort_order>1</sort_order>
+                                <action>marketplace/adminhtml_marketplace/dashboard</action>
+                            </dashboard>            
+                            <catalog module="marketplace">
+                                <title>Products</title>
+                                <sort_order>2</sort_order>
+                                <action>marketplace/adminhtml_catalog_product/index</action>
+                            </catalog>  
+                            <orders module="marketplace">
+                                <title>Manage Orders</title>
+                                <sort_order>3</sort_order>
+                                <action>marketplace/adminhtml_marketplace/orders</action>
+                            </orders>
+                        </children>
+                    </marketplace>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <layout>
+        <updates>
+            <marketplace>
+                <file>mm/marketplace.xml</file>
+            </marketplace>
+        </updates>
+    </layout>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MM Ajax 
+ * 
+ * @category     MM
+ * @package      MM_Marketplace 
+ * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
+ * @author       MM (Thiago Caldeira de Lima)  
+ * @version      Release: 0.1.0
+ */
+-->
+<config>
+    <modules>
+        <MM_Marketplace>
+            <active>true</active>
+            <codePool>community</codePool>
+        </MM_Marketplace>
+    </modules>
+</config>

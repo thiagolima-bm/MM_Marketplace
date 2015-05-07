@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MM Marketplace 
+ * 
+ * @category     MM
+ * @package      MM_Marketplace 
+ * @copyright    Copyright (c) 2015 MM (http://blog.meumagento.com.br/)
+ * @author       MM (Thiago Caldeira de Lima)  
+ * @version      Release: 0.1.0
+ */
+ -->
+ <config>
+    <modules>
+        <MM_Marketplace>
+            <version>0.1.0</version>
+        </MM_Marketplace>
+    </modules>
+    <global>
+        <blocks>
+            <marketplace>
+                <class>MM_Marketplace_Block</class>
+            </marketplace>
+            <catalog>
+                <rewrite>
+                    <catalog_product_edit_tabs>MM_Marketplace_Block_Adminhtml_Catalog_Product_Edit_Tabs</catalog_product_edit_tabs>
+                </rewrite>
+            </catalog>  
+        </blocks>
+        <helpers>
+            <marketplace>
+                <class>MM_Marketplace_Helper</class>
+            </marketplace>
+        </helpers>
+        <resources>
+            <marketplace_setup>
+                <setup>
+                    <module>MM_Marketplace</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </marketplace_setup>
+            <marketplace_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </marketplace_write>
+            <marketplace_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </marketplace_read>
+        </resources>
+    </global>
+    <frontend>
+        <!-- <secure_url>
+            <plan>plano</plan>
+        </secure_url> -->
+
+        <translate>
+            <modules>
+                <MM_Marketplace>
+                    <files>
+                        <default>MM_Marketplace.csv</default>
+                    </files>
+                </MM_Marketplace>
+            </modules>
+        </translate>
+        <routers>
+             <marketplace>
+                <use>standard</use>
+                <args>
+                    <module>MM_Marketplace</module>
+                    <frontName>marketplace</frontName>
+                </args>
+            </marketplace>
+        </routers>
+    </frontend> 
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <MM_Marketplace before="Mage_Adminhtml">MM_Marketplace_Adminhtml</MM_Marketplace>
+                    </modules>
+                </args>
+            </adminhtml>            
+        </routers> 
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <marketplace>
+                    <file>mm/marketplace.xml</file>
+                </marketplace>
+            </updates>
+        </layout>
+    </adminhtml> 
+</config>
