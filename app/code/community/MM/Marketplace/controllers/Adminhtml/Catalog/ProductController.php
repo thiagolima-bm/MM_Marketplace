@@ -293,7 +293,7 @@ class MM_Marketplace_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_
         $user = Mage::getSingleton('admin/session')->getUser();
 
         $productUserId = $product->getData('user_id');
-        if (!$productUserId || ($productUserId != $user->getId())) {
+        if ($productUserId && ($productUserId != $user->getId())) {
 
             $this->_getSession()->addError(__('You cannot edit this product!'));
 
