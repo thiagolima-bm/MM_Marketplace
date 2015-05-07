@@ -73,6 +73,8 @@ class MM_Marketplace_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_
 
         $product = $this->_initProduct();
 
+        $this->_checkOwner($product);
+
         $this->loadLayout();
         
         $this->_setActiveMenu('marketplace/product');    
@@ -98,6 +100,8 @@ class MM_Marketplace_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_
             $this->_filterStockData($data['product']['stock_data']);
 
             $product = $this->_initProductSave();
+
+            $this->_checkOwner($product);
 
             try {
                 $product->setData('user_id',$user->getId()); // feel the magic ;-)
@@ -282,6 +286,20 @@ class MM_Marketplace_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_
     protected function _isAllowed()
     {
         return true;
+    }
+
+    private function _checkOwner($product)
+    {
+        $user = Mage::getSingleton('admin/session')->getUser();
+
+        $productUserId = $product->getData('user_id');
+        if (!$productUserId || ($productUserId != $user->getId())) {
+
+            $this->_getSession()->addError(__('You cannot edit this product!'));
+
+            $this->_redirect('*/*/');
+
+        }
     }
 
 }
